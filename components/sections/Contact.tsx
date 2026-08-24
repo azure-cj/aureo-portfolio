@@ -25,7 +25,7 @@ export default function Contact() {
       variants={staggerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.1, margin: "-20px" }}
     >
       <motion.h2
         className="heading-lg"
@@ -45,7 +45,7 @@ export default function Contact() {
             <Link
               href={`mailto:${siteConfig.email}`}
               external
-              className="mt-4 inline-flex border border-accent bg-accent px-4 py-2 text-sm font-medium text-background transition-smooth hover:opacity-90"
+              className="mt-4 inline-flex items-center justify-center min-h-[44px] border border-accent bg-accent px-5 py-2.5 text-sm font-medium text-background transition-smooth hover:opacity-90 active:scale-95"
             >
               {contactContent.ctaLabel}
             </Link>
@@ -58,12 +58,13 @@ export default function Contact() {
                 Personal
               </p>
               <button
+                type="button"
                 onClick={() => handleCopyEmail(siteConfig.email, setCopiedPersonal)}
-                className="mt-2 inline-flex items-center gap-2 px-3 py-2 rounded bg-surface border border-white/10 text-sm text-text-muted hover:text-primary hover:border-accent/40 transition-all duration-200 font-mono"
+                className="mt-2 inline-flex items-center justify-between gap-2 max-w-full min-h-[44px] px-3.5 py-2 rounded bg-surface border border-white/10 text-xs sm:text-sm text-text-muted hover:text-primary hover:border-accent/40 active:scale-98 transition-all duration-200 font-mono break-all text-left"
               >
-                {siteConfig.email}
-                <span className="text-xs">
-                  {copiedPersonal ? "✓" : "📋"}
+                <span>{siteConfig.email}</span>
+                <span className="text-xs flex-shrink-0 ml-2">
+                  {copiedPersonal ? "✓ Copied" : "📋 Copy"}
                 </span>
               </button>
             </div>
@@ -75,24 +76,25 @@ export default function Contact() {
                   School
                 </p>
                 <button
+                  type="button"
                   onClick={() => handleCopyEmail(siteConfig.schoolEmail!, setCopiedSchool)}
-                  className="mt-2 inline-flex items-center gap-2 px-3 py-2 rounded bg-surface border border-white/10 text-sm text-text-muted hover:text-primary hover:border-accent/40 transition-all duration-200 font-mono"
+                  className="mt-2 inline-flex items-center justify-between gap-2 max-w-full min-h-[44px] px-3.5 py-2 rounded bg-surface border border-white/10 text-xs sm:text-sm text-text-muted hover:text-primary hover:border-accent/40 active:scale-98 transition-all duration-200 font-mono break-all text-left"
                 >
-                  {siteConfig.schoolEmail}
-                  <span className="text-xs">
-                    {copiedSchool ? "✓" : "📋"}
+                  <span>{siteConfig.schoolEmail}</span>
+                  <span className="text-xs flex-shrink-0 ml-2">
+                    {copiedSchool ? "✓ Copied" : "📋 Copy"}
                   </span>
                 </button>
               </div>
             )}
 
             {/* Facebook Link */}
-            <div className="flex justify-center pt-4">
+            <div className="flex sm:justify-start pt-2">
               <a
                 href="https://www.facebook.com/christopher.aureo.1/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface border border-white/10 text-muted hover:text-primary hover:border-accent/40 transition-all duration-200 text-sm font-mono"
+                className="inline-flex items-center gap-2 min-h-[44px] px-5 py-2.5 rounded-full bg-surface border border-white/10 text-muted hover:text-primary hover:border-accent/40 transition-all duration-200 text-sm font-mono"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +105,7 @@ export default function Contact() {
                 >
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                 </svg>
-                Facebook
+                Facebook ↗
               </a>
             </div>
           </div>

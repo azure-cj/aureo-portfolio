@@ -146,7 +146,7 @@ export default function TechStack() {
       className="space-y-8 py-16"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.35 }}
+      viewport={{ once: true, amount: 0.1, margin: "-20px" }}
       variants={{
         hidden: { opacity: 0 },
         visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
@@ -164,8 +164,9 @@ export default function TechStack() {
         {tabs.map((tab) => (
           <button
             key={tab.id}
+            type="button"
             onClick={() => setActiveTab(tab.label)}
-            className={`font-mono text-xs px-4 py-1.5 rounded-full cursor-pointer transition-all duration-200 ${
+            className={`font-mono text-xs px-3.5 py-2 min-h-[38px] rounded-full cursor-pointer transition-all duration-200 active:scale-95 ${
               activeTab === tab.label
                 ? "bg-accent text-black font-semibold"
                 : "bg-surface text-muted border border-white/10 hover:border-accent/40 hover:text-primary"

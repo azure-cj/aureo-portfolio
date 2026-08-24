@@ -59,7 +59,7 @@ export default function Experience() {
       variants={staggerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.1, margin: "-20px" }}
     >
       <motion.h2
         className="heading-lg"
@@ -177,8 +177,9 @@ export default function Experience() {
               return (
                 <div key={cert.id}>
                   <button
+                    type="button"
                     onClick={() => setOpenCertId(isOpen ? null : cert.id)}
-                    className="w-full px-4 py-3 flex items-center gap-3 hover:bg-surface/60 border-b border-white/5 last:border-b-0 transition-all duration-200 group"
+                    className="w-full px-4 py-3 min-h-[48px] flex items-center gap-3 hover:bg-surface/60 border-b border-white/5 last:border-b-0 transition-all duration-200 group text-left"
                   >
                     <div className="flex-shrink-0">
                       {getIssuerBadge(cert.issuer)}
@@ -208,16 +209,17 @@ export default function Experience() {
                       >
                         <div className="bg-surface/40 border-t border-white/5 px-4 py-4 space-y-4">
                           {cert.credentialUrl && !cert.credentialUrl.includes("TODO") ? (
-                            <div className="relative w-full" style={{ height: "380px" }}>
+                            <div className="relative w-full h-56 sm:h-80 md:h-96">
                               <Image
                                 src={cert.credentialUrl}
                                 alt={cert.name}
                                 fill
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 70vw"
                                 className="rounded-lg border border-white/10 object-contain"
                               />
                             </div>
                           ) : (
-                            <div className="w-full h-96 rounded-lg border border-white/10 bg-surface/30 flex items-center justify-center">
+                            <div className="w-full h-48 sm:h-72 rounded-lg border border-white/10 bg-surface/30 flex items-center justify-center">
                               <p className="text-sm text-text-muted">
                                 Certificate preview unavailable
                               </p>

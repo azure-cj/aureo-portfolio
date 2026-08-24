@@ -32,7 +32,7 @@ export default function About() {
       variants={staggerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.35 }}
+      viewport={{ once: true, amount: 0.1, margin: "-20px" }}
     >
       <motion.h2
         className="heading-lg"

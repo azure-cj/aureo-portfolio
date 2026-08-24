@@ -50,28 +50,28 @@ export default function Navigation() {
           <Button
             variant="ghost"
             size="sm"
-            className="md:hidden"
+            className="md:hidden min-h-[44px] min-w-[44px] px-3 font-mono text-xs"
             onClick={() => setIsOpen((value) => !value)}
             aria-expanded={isOpen}
             aria-controls="mobile-nav"
             aria-label="Toggle navigation"
           >
-            {isOpen ? "Close" : "Menu"}
+            {isOpen ? "Close ✕" : "Menu ☰"}
           </Button>
         </div>
 
         <div
           id="mobile-nav"
           className={cn(
-            "grid gap-3 overflow-hidden border-t border-border/60 pb-4 md:hidden",
-            isOpen ? "pt-4" : "max-h-0 border-transparent pb-0 pt-0"
+            "grid gap-2 overflow-hidden border-t border-border/60 pb-4 md:hidden transition-all duration-300",
+            isOpen ? "pt-4 max-h-96 opacity-100" : "max-h-0 border-transparent pb-0 pt-0 opacity-0"
           )}
         >
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-text-muted transition-smooth hover:text-accent"
+              className="flex items-center min-h-[44px] px-2 text-sm text-text-muted transition-smooth hover:text-accent active:text-accent font-mono"
               onClick={() => setIsOpen(false)}
             >
               {link.label}
@@ -79,9 +79,9 @@ export default function Navigation() {
           ))}
           <Link
             href={`mailto:${siteConfig.email}`}
-            className="text-sm"
+            className="flex items-center min-h-[44px] px-2 text-sm text-accent"
           >
-            Email
+            Email ↗
           </Link>
         </div>
       </Container>

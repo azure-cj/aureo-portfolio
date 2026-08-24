@@ -32,7 +32,7 @@ export default function Home() {
       <ScrollProgress />
       <Navigation />
 
-      <main className="space-y-16 py-12 sm:space-y-24 sm:py-20 lg:space-y-32 lg:py-32">
+      <main className="space-y-16 py-12 sm:space-y-24 sm:py-20 lg:space-y-32 lg:py-32 overflow-x-hidden">
         <section
           id="hero"
           className="scroll-mt-20"
