@@ -6,12 +6,22 @@ const projects: Project[] = [
     title: 'NUFV Lost & Found Management System',
     description: 'Modern Lost & Found system for National University Fairview, replacing a legacy PHP workflow with a full-stack web application.',
     tags: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'Prisma ORM', 'PostgreSQL', 'Neon', 'JWT', 'bcryptjs', 'Nodemailer', 'Vercel Blob'],
+    live: 'https://nufv-lostandfound.vercel.app/',
     featured: true,
     images: [
       "/projects/nufv-lost-found/preview1.png",
       "/projects/nufv-lost-found/preview2.png",
       "/projects/nufv-lost-found/preview3.png",
     ]
+  },
+  {
+    id: 'nufv-gmc-portal',
+    title: 'NUFV Good Moral Certificate Request Portal',
+    description: 'Online Good Moral Certificate request system for the National University Fairview Student Discipline Office, streamlining student applications, payment verification, and request tracking.',
+    tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    live: 'https://gmc-web-nufv.vercel.app/',
+    featured: true,
+    images: []
   },
   {
     id: 'aqualogic',
