@@ -182,7 +182,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </>
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center bg-surface/60 border border-white/5 p-4 text-center">
-            <span className="text-xs text-text-muted font-mono">No preview preview</span>
+            <span className="text-xs text-cream font-mono">No preview available</span>
           </div>
         )}
       </div>
@@ -192,9 +192,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div>
           <h3 className="heading-sm">{project.title}</h3>
           {project.featured ? (
-            <p className="mt-1 text-xs uppercase tracking-[0.22em] text-accent font-semibold">
+            <span className="mt-2 inline-block rounded-none border border-accent bg-accent px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream">
               Featured
-            </p>
+            </span>
           ) : null}
         </div>
         <span className="text-xs uppercase tracking-[0.2em] text-text-dim whitespace-nowrap">
@@ -202,7 +202,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </span>
       </div>
 
-      <p className="body-sm flex-1 text-text-muted">{project.description}</p>
+      <p className="body-sm flex-1 text-cream">{project.description}</p>
 
       <div className="mt-5 flex flex-wrap gap-2">
         {project.tags.map((tag) => (
@@ -217,7 +217,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <Link
             href={project.live}
             external
-            className="text-sm min-h-[44px] flex items-center"
+            className="rounded-none border border-accent bg-accent px-4 py-2 text-sm font-medium text-cream hover:opacity-90 min-h-[44px] flex items-center"
           >
             Live site ↗
           </Link>
@@ -227,7 +227,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <Link
             href={project.github}
             external
-            className="text-sm text-text-muted min-h-[44px] flex items-center"
+            className="text-sm text-cream min-h-[44px] flex items-center"
           >
             GitHub ↗
           </Link>

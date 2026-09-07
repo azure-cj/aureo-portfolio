@@ -9,7 +9,7 @@ interface BadgeProps extends PropsWithChildren<HTMLAttributes<HTMLSpanElement>> 
 
 const variantStyles: Record<BadgeVariant, string> = {
   default: "border border-border bg-surface text-text-muted",
-  accent: "border border-accent/30 bg-accent/10 text-accent",
+  accent: "rounded-none border border-accent bg-accent text-cream",
 };
 
 export default function Badge({

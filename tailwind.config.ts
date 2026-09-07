@@ -10,6 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        ink: "#0a0a0a",
+        cream: "#e8d9c5",
         background: {
           DEFAULT: "#0a0a0a",
           50: "#f5f5f5",
@@ -24,15 +26,16 @@ const config: Config = {
         "text-muted": "#999999",
         "text-dim": "#666666",
         accent: {
-          DEFAULT: "#00ff94",
-          dim: "#00cc77",
-          bright: "#00ff94",
+          DEFAULT: "#a11d1d",
+          dim: "#7c1414",
+          bright: "#c22a2a",
         },
         border: "#2a2a2a",
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
         mono: ["var(--font-body)", "monospace"],
+        script: ["var(--font-script)", "cursive"],
       },
       fontSize: {
         display: ["clamp(2.25rem, 5vw, 4rem)", { lineHeight: "1.1" }],

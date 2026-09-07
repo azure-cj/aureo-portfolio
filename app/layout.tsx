@@ -1,6 +1,29 @@
 import type { Metadata, Viewport } from "next";
+import { Caveat, DM_Mono, Space_Grotesk } from "next/font/google";
 import "@/styles/globals.css";
 import { siteConfig } from "@/src/data/metadata";
+import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
+
+const fontDisplay = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const fontBody = DM_Mono({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const fontScript = Caveat({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-script",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -94,9 +117,11 @@ export default function RootLayout({
           href="https://cdn.vercel-analytics.com"
         />
       </head>
-      <body className="bg-background text-text-primary">
+      <body
+        className={`${fontDisplay.variable} ${fontBody.variable} ${fontScript.variable} bg-background text-text-primary`}
+      >
         <div className="relative min-h-screen overflow-x-hidden">
-          {children}
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </div>
       </body>
     </html>

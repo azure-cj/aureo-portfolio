@@ -1,10 +1,13 @@
 :root {
   --color-background: #0a0a0a;
   --color-surface: #141414;
-  --color-text: #f0ede8;
-  --color-accent: #00ff94;
-  --color-muted: #666666;
+  --color-text: #e8d9c5;
+  --color-ink: #0a0a0a;
+  --color-cream: #e8d9c5;
+  --color-accent: #a11d1d;
+  --color-muted: #6b665e;
   --color-border: #2a2a2a;
   --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
   --font-body: "DM Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-script: "Caveat", cursive;
 }

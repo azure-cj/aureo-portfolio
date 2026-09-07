@@ -14,7 +14,6 @@ export default function About() {
 
   const highlights = [
     "Full-Stack Web Development",
-    "Mobile Application Development",
     "IoT & Embedded Systems",
     "Database Design & Management",
     "UI/UX Design",

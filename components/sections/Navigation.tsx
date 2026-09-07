@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Container from "@/components/ui/Container";
-import Link from "@/components/ui/Link";
 import Button from "@/components/ui/Button";
 import { siteConfig } from "@/src/data/metadata";
 import { cn } from "@/src/lib/utils";
@@ -15,42 +14,36 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
+const navLinkClass =
+  "flex items-center gap-2 font-display text-sm font-medium uppercase tracking-[0.12em] text-cream transition-smooth hover:text-accent";
+
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur">
+    <header className="sticky top-0 z-50 bg-ink/90 backdrop-blur">
       <Container>
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between py-5">
           <a
             href="#hero"
-            className="font-display text-sm font-semibold tracking-[0.24em] text-text-primary uppercase"
+            className="font-display text-sm font-bold tracking-[0.24em] text-cream uppercase"
           >
             {siteConfig.initials}
           </a>
 
-          <nav className="hidden items-center gap-6 md:flex">
+          <nav className="hidden items-center gap-7 md:flex">
             {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-text-muted transition-smooth hover:text-accent"
-              >
+              <a key={link.href} href={link.href} className={navLinkClass}>
+                <span className="text-accent">•</span>
                 {link.label}
               </a>
             ))}
-            <Link
-              href={`mailto:${siteConfig.email}`}
-              className="text-sm"
-            >
-              Email
-            </Link>
           </nav>
 
           <Button
             variant="ghost"
             size="sm"
-            className="md:hidden min-h-[44px] min-w-[44px] px-3 font-mono text-xs"
+            className="md:hidden min-h-[44px] min-w-[44px] px-3 font-display text-xs uppercase tracking-widest text-cream"
             onClick={() => setIsOpen((value) => !value)}
             aria-expanded={isOpen}
             aria-controls="mobile-nav"
@@ -63,28 +56,31 @@ export default function Navigation() {
         <div
           id="mobile-nav"
           className={cn(
-            "grid gap-2 overflow-hidden border-t border-border/60 pb-4 md:hidden transition-all duration-300",
-            isOpen ? "pt-4 max-h-96 opacity-100" : "max-h-0 border-transparent pb-0 pt-0 opacity-0"
+            "grid gap-1 overflow-hidden md:hidden transition-all duration-300",
+            isOpen
+              ? "max-h-96 opacity-100 pb-5 pt-2"
+              : "max-h-0 pb-0 pt-0 opacity-0"
           )}
         >
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="flex items-center min-h-[44px] px-2 text-sm text-text-muted transition-smooth hover:text-accent active:text-accent font-mono"
+              className={cn(
+                navLinkClass,
+                "min-h-[44px] px-2"
+              )}
               onClick={() => setIsOpen(false)}
             >
+              <span className="text-accent">•</span>
               {link.label}
             </a>
           ))}
-          <Link
-            href={`mailto:${siteConfig.email}`}
-            className="flex items-center min-h-[44px] px-2 text-sm text-accent"
-          >
-            Email ↗
-          </Link>
         </div>
       </Container>
+
+      {/* Thin horizontal rule beneath the nav bar */}
+      <div className="h-px w-full bg-border" />
     </header>
   );
 }

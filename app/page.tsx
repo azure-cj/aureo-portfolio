@@ -9,6 +9,7 @@ import TechStack from "@/components/sections/TechStack";
 import Projects from "@/components/sections/Projects";
 import Experience from "@/components/sections/Experience";
 import Contact from "@/components/sections/Contact";
+import RevealSection from "@/components/ui/RevealSection";
 import Separator from "@/components/ui/Separator";
 import Container from "@/components/ui/Container";
 
@@ -32,68 +33,50 @@ export default function Home() {
       <ScrollProgress />
       <Navigation />
 
-      <main className="space-y-16 py-12 sm:space-y-24 sm:py-20 lg:space-y-32 lg:py-32 overflow-x-hidden">
-        <section
-          id="hero"
-          className="scroll-mt-20"
-        >
+      <main className="overflow-x-hidden">
+        <RevealSection id="hero">
           <Hero />
-        </section>
+        </RevealSection>
 
         <Separator />
 
-        <section
-          id="about"
-          className="scroll-mt-20"
-        >
+        <RevealSection id="about" className="flex items-center">
           <Container>
             <About />
           </Container>
-        </section>
+        </RevealSection>
 
         <Separator />
 
-        <section
-          id="stack"
-          className="scroll-mt-20"
-        >
+        <RevealSection id="stack" className="flex items-center">
           <Container>
             <TechStack />
           </Container>
-        </section>
+        </RevealSection>
 
         <Separator />
 
-        <section
-          id="projects"
-          className="scroll-mt-20"
-        >
+        <RevealSection id="projects" className="flex items-center">
           <Container>
             <Projects />
           </Container>
-        </section>
+        </RevealSection>
 
         <Separator />
 
-        <section
-          id="experience"
-          className="scroll-mt-20"
-        >
+        <RevealSection id="experience" className="flex items-center">
           <Container>
             <Experience />
           </Container>
-        </section>
+        </RevealSection>
 
         <Separator />
 
-        <section
-          id="contact"
-          className="scroll-mt-20"
-        >
+        <RevealSection id="contact" className="flex items-center">
           <Container>
             <Contact />
           </Container>
-        </section>
+        </RevealSection>
       </main>
 
       <footer className="border-t border-border bg-background/50 backdrop-blur-sm mt-24 sm:mt-32">
