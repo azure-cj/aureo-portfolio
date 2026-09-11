@@ -5,6 +5,7 @@ node_modules/
 dist/
 coverage/
 *.log
+*.tsbuildinfo
 public/cv.pdf
 node_modules
 .next
