@@ -4,6 +4,12 @@ import type {
   HeroContent,
 } from "@/src/types/content";
 
+export const heroSequenceConfig = {
+  frameCount: 120,
+  framePath: (i: number) => `/sequence/frame-${String(i + 1).padStart(4, "0")}.webp`,
+  fit: "cover" as const,
+};
+
 export const heroContent: HeroContent = {
   name: "CJ",
   title:
@@ -18,6 +24,7 @@ export const heroContent: HeroContent = {
     text: "View work",
     href: "#projects",
   },
+  sequence: heroSequenceConfig,
 };
 
 export const aboutContent: AboutContent = {

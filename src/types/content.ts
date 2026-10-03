@@ -18,6 +18,12 @@ export interface SiteConfig {
   socials: SocialLink[];
 }
 
+export interface HeroSequenceConfig {
+  frameCount: number;
+  framePath: (index: number) => string;
+  fit?: "cover" | "contain";
+}
+
 export interface HeroContent {
   name: string;
   title: string;
@@ -30,6 +36,7 @@ export interface HeroContent {
     text: string;
     href: string;
   };
+  sequence?: HeroSequenceConfig;
 }
 
 export interface AboutContent {

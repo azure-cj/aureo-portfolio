@@ -37,6 +37,11 @@ export default function SmoothScrollProvider({
     // Keep ScrollTrigger in sync with Lenis' scroll position.
     lenis.on("scroll", ScrollTrigger.update);
 
+    // Expose Lenis globally for programmatic scrollTo
+    if (typeof window !== "undefined") {
+      (window as any).lenis = lenis;
+    }
+
     // Drive Lenis from GSAP's ticker so everything shares one frame loop.
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
@@ -45,6 +50,9 @@ export default function SmoothScrollProvider({
 
     return () => {
       gsap.ticker.remove(lenis.raf);
+      if (typeof window !== "undefined") {
+        delete (window as any).lenis;
+      }
       lenis.destroy();
       lenisRef.current = null;
     };
