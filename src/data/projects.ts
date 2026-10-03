@@ -2,6 +2,32 @@ import type { Project } from '../types'
 
 const projects: Project[] = [
   {
+    id: 'cha0s-sim',
+    title: 'cha0s;sim',
+    tagline: 'Local chaos-injection and security-scanning proxy for testing frontend resilience.',
+    description: 'A local reverse proxy you run in front of your own backend to inject network chaos (latency, status overrides, dropped connections, response mangling, fuzzing), passively scan traffic for missing security headers and leaked secrets, and run stress tests with p50/p95/p99 reporting. Includes a Windows desktop dashboard and a headless CLI that share the same rule engine.',
+    tags: ['Go', 'Wails', 'React', 'Vite', 'WebView2'],
+    highlights: [
+      'Hot-reloaded chaos rules with five effect types',
+      'Passive security scanning with remediation suggestions',
+      'Flat/ramp/stepped/spike stress shapes',
+      'Multi-step scenarios',
+      'No-YAML rule builder in the desktop app',
+    ],
+    github: 'https://github.com/azure-cj/cha0s-sim',
+    download: 'https://github.com/azure-cj/cha0s-sim/releases',
+    secondaryLink: {
+      label: 'Download',
+      url: 'https://github.com/azure-cj/cha0s-sim/releases',
+    },
+    featured: true,
+    images: [
+      '/projects/cha0s-sim/preview1.png',
+      '/projects/cha0s-sim/preview2.png',
+      '/projects/cha0s-sim/preview3.png',
+    ],
+  },
+  {
     id: 'nufv-lost-found',
     title: 'NUFV Lost & Found Management System',
     description: 'Modern Lost & Found system for National University Fairview, replacing a legacy PHP workflow with a full-stack web application.',

@@ -232,6 +232,16 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             GitHub ↗
           </Link>
         ) : null}
+
+        {project.secondaryLink ? (
+          <Link
+            href={project.secondaryLink.url}
+            external
+            className="text-sm text-cream min-h-[44px] flex items-center"
+          >
+            {project.secondaryLink.label} ↗
+          </Link>
+        ) : null}
       </div>
     </Card>
   );

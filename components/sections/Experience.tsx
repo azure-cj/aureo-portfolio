@@ -12,11 +12,15 @@ import { fadeInVariants, staggerVariants } from "@/src/lib/animations";
 import experience from "@/src/data/experience";
 import organizations from "@/src/data/organizations";
 import certifications from "@/src/data/certifications";
+import { cn } from "@/src/lib/utils";
 
 export default function Experience() {
   const [openCertId, setOpenCertId] = useState<string | null>(null)
 
   const sortedCerts = [...certifications].sort((a, b) => {
+    if (a.featured && !b.featured) return -1
+    if (!a.featured && b.featured) return 1
+
     const monthMap: { [key: string]: number } = {
       "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
       "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12
@@ -43,6 +47,12 @@ export default function Experience() {
       return (
         <span className="inline-flex items-center px-2 py-1 text-xs font-mono rounded border border-blue-500/30 bg-blue-500/10 text-blue-400">
           CISCO
+        </span>
+      )
+    } else if (issuer.includes("NU") || issuer.includes("National University")) {
+      return (
+        <span className="inline-flex items-center px-2 py-1 text-xs font-mono rounded border border-accent/40 bg-accent/15 text-accent font-semibold">
+          NU
         </span>
       )
     }
@@ -175,19 +185,34 @@ export default function Experience() {
               const issueYear = cert.issueDate.split(" ")[1]
 
               return (
-                <div key={cert.id}>
+                <div
+                  key={cert.id}
+                  className={cn(
+                    "transition-all duration-200",
+                    cert.featured &&
+                      "border border-accent/40 bg-accent/[0.03] shadow-[0_0_15px_rgba(0,255,148,0.07)] rounded-md my-1"
+                  )}
+                >
                   <button
                     type="button"
                     onClick={() => setOpenCertId(isOpen ? null : cert.id)}
-                    className="w-full px-4 py-3 min-h-[48px] flex items-center gap-3 hover:bg-surface/60 border-b border-white/5 last:border-b-0 transition-all duration-200 group text-left"
+                    className={cn(
+                      "w-full px-4 py-3 min-h-[48px] flex items-center gap-3 hover:bg-surface/60 border-b border-white/5 last:border-b-0 transition-all duration-200 group text-left",
+                      cert.featured && "border-b-accent/20"
+                    )}
                   >
                     <div className="flex-shrink-0">
                       {getIssuerBadge(cert.issuer)}
                     </div>
                     
-                    <h3 className="flex-1 text-left text-sm md:text-base text-primary font-display truncate group-hover:text-accent transition-colors">
-                      {cert.name}
-                    </h3>
+                    <div className="flex-1 min-w-0 flex items-center gap-2.5">
+                      <h3 className="text-left text-sm md:text-base text-primary font-display truncate group-hover:text-accent transition-colors">
+                        {cert.name}
+                      </h3>
+                      {cert.featured && (
+                        <Badge variant="accent">Featured</Badge>
+                      )}
+                    </div>
 
                     <div className="flex items-center gap-3 flex-shrink-0">
                       <span className="text-xs text-muted font-mono">{issueYear}</span>
@@ -208,6 +233,11 @@ export default function Experience() {
                         className="overflow-hidden"
                       >
                         <div className="bg-surface/40 border-t border-white/5 px-4 py-4 space-y-4">
+                          {cert.description && (
+                            <p className="text-xs sm:text-sm text-text-muted leading-relaxed font-mono border-l-2 border-accent/60 pl-3 py-0.5">
+                              {cert.description}
+                            </p>
+                          )}
                           {cert.credentialUrl && !cert.credentialUrl.includes("TODO") ? (
                             <div className="relative w-full h-56 sm:h-80 md:h-96">
                               <Image

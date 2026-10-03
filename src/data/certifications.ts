@@ -8,9 +8,21 @@ export interface Certification {
   badgeUrl?: string
   skills: string[]
   certificateId?: string
+  featured?: boolean
+  description?: string
 }
 
 export const certifications: Certification[] = [
+  {
+    id: "appreciation-sdo-nufv",
+    name: "Certificate of Appreciation",
+    issuer: "Student Discipline Office, NU Fairview",
+    issueDate: "Jul 2025",
+    description: "In recognition of outstanding support and initiative in enhancing the Lost and Found process through the development of the Lost and Found Dashboard.",
+    credentialUrl: "/certificates/CertificateofAppreciation.jpg",
+    skills: ["Web Development", "Dashboard Development", "Full-Stack Development", "System Design"],
+    featured: true
+  },
   {
     id: "fullstack-web-developer",
     name: "Getting Started as a Full-Stack Web Developer",

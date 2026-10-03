@@ -108,6 +108,34 @@ export default function Contact() {
                 Facebook ↗
               </a>
             </div>
+
+            {/* LinkedIn Link */}
+            <div className="flex sm:justify-start pt-2">
+              <a
+                href={siteConfig.socials.find((s) => s.platform === "linkedin")?.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
+                className="inline-flex items-center gap-2 min-h-[44px] px-5 py-2.5 rounded-full bg-surface border border-white/10 text-muted hover:text-primary hover:border-accent/40 transition-all duration-200 text-sm font-mono"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+                LinkedIn ↗
+              </a>
+            </div>
           </div>
         </Card>
       </motion.div>

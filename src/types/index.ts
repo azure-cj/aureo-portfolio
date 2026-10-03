@@ -14,10 +14,17 @@ export type TechCategory = {
 export type Project = {
   id: string
   title: string
+  tagline?: string
   description: string
   tags: string[]
   github?: string
   live?: string
+  download?: string
+  secondaryLink?: {
+    label: string
+    url: string
+  }
+  highlights?: string[]
   featured?: boolean
   thumbnail?: string
   images?: string[]

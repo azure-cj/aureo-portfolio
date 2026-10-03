@@ -23,6 +23,11 @@ export const siteConfig: SiteConfig = {
       label: "Facebook",
       url: "https://www.facebook.com/christopher.aureo.1/",
     },
+    {
+      platform: "linkedin",
+      label: "LinkedIn",
+      url: "https://www.linkedin.com/in/christopher-joseph-aureo-039b83434",
+    },
   ],
 };
 
