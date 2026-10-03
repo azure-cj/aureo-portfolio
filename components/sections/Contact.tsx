@@ -38,7 +38,17 @@ export default function Contact() {
       <motion.div variants={fadeInVariants}>
         <Card className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="space-y-4">
-            <p className="body-md text-text-muted">{contactContent.description}</p>
+            {Array.isArray(contactContent.description) ? (
+              <div className="space-y-4">
+                {contactContent.description.map((paragraph, index) => (
+                  <p key={index} className="body-md text-text-muted">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            ) : (
+              <p className="body-md text-text-muted">{contactContent.description}</p>
+            )}
             <p className="text-sm uppercase tracking-[0.22em] text-text-dim">
               {contactContent.availability}
             </p>

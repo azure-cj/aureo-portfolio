@@ -48,7 +48,7 @@ export interface AboutContent {
 
 export interface ContactContent {
   heading: string;
-  description: string;
+  description: string | string[];
   availability: string;
   ctaLabel: string;
 }

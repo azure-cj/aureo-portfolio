@@ -45,8 +45,10 @@ export const aboutContent: AboutContent = {
 
 export const contactContent: ContactContent = {
   heading: "Contact",
-  description:
-    "If you need a developer who can move between interface polish, architecture decisions, and pragmatic execution, I’m open to the right conversation.",
+  description: [
+    "If you’re looking for a developer who can contribute across interface design, implementation, and practical problem-solving, I’m open to opportunities where I can learn and contribute.",
+    "Currently seeking IT internship opportunities where I can apply my skills in web development, mobile applications, and IoT-based systems while gaining real-world experience.",
+  ],
   availability: "Available for select freelance and full-time roles.",
   ctaLabel: "Send an email",
 };
