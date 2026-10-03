@@ -19,6 +19,7 @@ export type Project = {
   tags: string[]
   status?: "in-progress" | "completed"
   projectType?: string
+  icon?: string
   github?: string
   live?: string
   download?: string

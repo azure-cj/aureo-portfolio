@@ -206,7 +206,22 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       {/* Project Info Section */}
       <div className="mb-4 flex items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
-          <h3 className="heading-sm">{project.title}</h3>
+          {project.icon ? (
+            <div className="flex items-center gap-3">
+              <div className="relative h-8 w-8 md:h-10 md:w-10 shrink-0 overflow-hidden rounded-lg border border-border bg-surface">
+                <Image
+                  src={project.icon}
+                  alt={`${project.title} app icon`}
+                  width={40}
+                  height={40}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <h3 className="heading-sm min-w-0 break-words">{project.title}</h3>
+            </div>
+          ) : (
+            <h3 className="heading-sm">{project.title}</h3>
+          )}
 
           <div className="mt-2.5 flex flex-wrap items-center gap-2">
             {project.status === "in-progress" && (

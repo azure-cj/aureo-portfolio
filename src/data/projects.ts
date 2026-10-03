@@ -21,6 +21,7 @@ const projects: Project[] = [
       url: 'https://github.com/azure-cj/cha0s-sim/releases',
     },
     featured: true,
+    icon: '/projects/cha0s-sim/appicon.png',
     images: [
       '/projects/cha0s-sim/sample1.png',
       '/projects/cha0s-sim/sample2.png',
@@ -36,6 +37,7 @@ const projects: Project[] = [
     live: 'https://nufv-lostandfound.vercel.app/',
     featured: true,
     images: [
+      "/projects/nufv-lost-found/preview.jpg",
       "/projects/nufv-lost-found/preview1.png",
       "/projects/nufv-lost-found/preview2.png",
       "/projects/nufv-lost-found/preview3.png",
