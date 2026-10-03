@@ -2,6 +2,7 @@ import type { SiteConfig } from "@/src/types/content";
 
 export const siteConfig: SiteConfig = {
   name: "CJ Aureo",
+  fullName: "Christopher Joseph Aureo",
   initials: "CJ DEV",
   role: "Aspiring Software Developer",
   title: "CJ Aureo — Aspiring Software Developer",
@@ -17,6 +18,11 @@ export const siteConfig: SiteConfig = {
       platform: "email",
       label: "Email",
       url: "mailto:chrstphraureo18@gmail.com",
+    },
+    {
+      platform: "github",
+      label: "GitHub",
+      url: "https://github.com/azure-cj",
     },
     {
       platform: "facebook",

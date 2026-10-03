@@ -6,6 +6,7 @@ export interface SocialLink {
 
 export interface SiteConfig {
   name: string;
+  fullName: string;
   initials: string;
   role: string;
   title: string;

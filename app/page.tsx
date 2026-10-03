@@ -12,6 +12,7 @@ import Contact from "@/components/sections/Contact";
 import RevealSection from "@/components/ui/RevealSection";
 import Separator from "@/components/ui/Separator";
 import Container from "@/components/ui/Container";
+import { siteConfig } from "@/src/data/metadata";
 
 function ScrollProgress() {
   const ref = useRef<HTMLDivElement>(null);
@@ -85,8 +86,8 @@ export default function Home() {
             <p className="text-sm text-text-muted">
               Built with <span className="text-accent">Next.js 14</span>, Tailwind CSS, and Framer Motion. Deployed on Vercel.
             </p>
-            <p className="mt-4 text-xs text-text-dim">
-              © {new Date().getFullYear()} YOUR_NAME. All rights reserved.
+            <p className="mt-4 text-xs text-text-dim" suppressHydrationWarning>
+              © {new Date().getFullYear()} {siteConfig.fullName}. All rights reserved.
             </p>
           </div>
         </Container>

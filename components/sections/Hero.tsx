@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Button from "@/components/ui/Button";
 import Link from "@/components/ui/Link";
 import ScrollFrameSequence from "@/components/ui/ScrollFrameSequence";
+import SocialIcon from "@/components/ui/SocialIcon";
 import { siteConfig } from "@/src/data/metadata";
 import { heroContent, heroSequenceConfig } from "@/src/data/content";
 
@@ -18,6 +19,13 @@ export default function Hero() {
   // Fade text and CTA out as the user scrolls through the sequence
   const contentOpacity = useTransform(scrollYProgress, [0, 0.45], [1, 0]);
   const contentY = useTransform(scrollYProgress, [0, 0.45], [0, -30]);
+
+  const githubUrl =
+    siteConfig.socials.find((s) => s.platform === "github")?.url ??
+    "https://github.com/azure-cj";
+  const linkedinUrl =
+    siteConfig.socials.find((s) => s.platform === "linkedin")?.url ??
+    "https://www.linkedin.com/in/christopher-joseph-aureo-039b83434";
 
   return (
     <section ref={heroRef} className="relative min-h-screen w-full overflow-hidden bg-ink">
@@ -69,12 +77,35 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Email — solid red box anchored to the bottom-right */}
-      <div className="absolute bottom-6 right-6 z-10 sm:bottom-8 sm:right-8">
+      {/* Bottom-right action cluster: GitHub · LinkedIn · Email */}
+      <div className="absolute bottom-6 right-6 z-10 flex items-center gap-2 sm:bottom-8 sm:right-8 max-w-[calc(100vw-3rem)]">
+        {/* GitHub icon button */}
+        <a
+          href={githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile"
+          className="inline-flex items-center justify-center rounded-none border border-accent bg-accent p-2.5 text-cream transition-smooth hover:opacity-90 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+        >
+          <SocialIcon name="github" size={16} />
+        </a>
+
+        {/* LinkedIn icon button */}
+        <a
+          href={linkedinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn profile"
+          className="inline-flex items-center justify-center rounded-none border border-accent bg-accent p-2.5 text-cream transition-smooth hover:opacity-90 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+        >
+          <SocialIcon name="linkedin" size={16} />
+        </a>
+
+        {/* Email button — unchanged */}
         <Link
           href={`mailto:${siteConfig.email}`}
           external
-          className="rounded-none border border-accent bg-accent px-5 py-2.5 font-display text-sm font-medium uppercase tracking-wider text-cream transition-smooth hover:opacity-90 active:scale-95"
+          className="rounded-none border border-accent bg-accent px-5 py-2.5 font-display text-sm font-medium uppercase tracking-wider text-cream transition-smooth hover:opacity-90 active:scale-95 min-w-0 truncate"
         >
           {siteConfig.email}
         </Link>
