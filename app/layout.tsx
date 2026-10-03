@@ -83,11 +83,6 @@ export const metadata: Metadata = {
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
-  icons: {
-    icon: [{ url: "/icons/webfavicon.jpg", type: "image/jpeg" }],
-    shortcut: "/icons/webfavicon.jpg",
-    apple: [{ url: "/icons/webfavicon.jpg", sizes: "2048x2048", type: "image/jpeg" }],
-  },
 };
 
 export const viewport: Viewport = {
@@ -111,15 +106,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link
-          rel="icon"
-          href="/icons/webfavicon.jpg"
-          type="image/jpeg"
-        />
-        <link
-          rel="apple-touch-icon"
-          href="/icons/webfavicon.jpg"
-        />
         <link
           rel="dns-prefetch"
           href="https://cdn.vercel-analytics.com"
