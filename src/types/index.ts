@@ -17,6 +17,8 @@ export type Project = {
   tagline?: string
   description: string
   tags: string[]
+  status?: "in-progress" | "completed"
+  projectType?: string
   github?: string
   live?: string
   download?: string

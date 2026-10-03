@@ -22,9 +22,10 @@ const projects: Project[] = [
     },
     featured: true,
     images: [
-      '/projects/cha0s-sim/preview1.png',
-      '/projects/cha0s-sim/preview2.png',
-      '/projects/cha0s-sim/preview3.png',
+      '/projects/cha0s-sim/sample1.png',
+      '/projects/cha0s-sim/sample2.png',
+      '/projects/cha0s-sim/sample3.png',
+      '/projects/cha0s-sim/sample4.png',
     ],
   },
   {
@@ -46,22 +47,25 @@ const projects: Project[] = [
     description: 'Online Good Moral Certificate request system for the National University Fairview Student Discipline Office, streamlining student applications, payment verification, and request tracking.',
     tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
     live: 'https://gmc-web-nufv.vercel.app/',
+    status: 'in-progress',
     featured: true,
-    images: []
+    images: ['/projects/nufv-gmc-portal/websitepreview.jpg']
   },
   {
     id: 'aqualogic',
     title: 'AquaLogic — IoT Water Monitoring System',
     description: 'IoT-based aquarium monitoring and automation system for JRed Aquatics that tracks water parameters in real time.',
     tags: ['ESP32', 'Arduino', 'IoT Sensors', 'React', 'Node.js', 'WebSockets', 'Embedded C++'],
+    projectType: 'Software Development Project',
     featured: true,
-    images: ["/projects/aqualogic/preview1.jpg", "/projects/aqualogic/preview2.png", "/projects/aqualogic/preview3.jpg"]
+    images: ["/projects/aqualogic/preview.jpg", "/projects/aqualogic/preview1.jpg"]
   },
   {
     id: 'cylens',
     title: 'CyLens',
     description: 'Android application that assists colorblind users through real-time color detection and camera-based analysis.',
     tags: ['Kotlin', 'Android Studio', 'Camera2 API', 'ML Kit'],
+    projectType: 'Mobile Application Project',
     featured: false,
     images: ["/projects/cylens/preview1.jpg", "/projects/cylens/preview2.png", "/projects/cylens/preview3.jpg"]
   },
@@ -70,6 +74,7 @@ const projects: Project[] = [
     title: 'Empire Fitness',
     description: 'Gym management system featuring guest logging, attendance tracking, membership management, and administrative tools.',
     tags: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
+    projectType: 'Capstone Project',
     featured: false,
     images: [] // TODO: add real screenshots
   },

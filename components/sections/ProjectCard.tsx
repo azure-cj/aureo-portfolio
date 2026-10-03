@@ -3,10 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import Badge from "@/components/ui/Badge";
 import Card from "@/components/ui/Card";
 import Link from "@/components/ui/Link";
+import ImageModal from "@/components/ui/ImageModal";
 import type { Project } from "@/src/types";
 
 type Direction = -1 | 1;
@@ -19,6 +20,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<Direction>(1);
   const [isInteracting, setIsInteracting] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [failedImages, setFailedImages] = useState<Record<number, boolean>>({});
   const autoAdvanceRef = useRef<NodeJS.Timeout>();
   const touchStartX = useRef<number | null>(null);
@@ -106,7 +108,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: direction > 0 ? -20 : 20 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="relative w-full h-full"
+                className="relative w-full h-full cursor-zoom-in"
+                onClick={() => setIsModalOpen(true)}
               >
                 <Image
                   src={images[currentIndex]}
@@ -121,6 +124,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               </motion.div>
             </AnimatePresence>
 
+            {/* Hover hint for zoom */}
+            <div className="pointer-events-none absolute bottom-2.5 right-2.5 z-10 hidden sm:flex items-center gap-1.5 rounded-full bg-black/75 px-2.5 py-1 text-[11px] font-mono text-cream/90 opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100">
+              <ZoomIn size={13} className="text-accent" />
+              <span>Click to enlarge</span>
+            </div>
+
             {/* Image Count Badge */}
             {hasMultipleImages && (
               <div className="absolute top-2 right-2 bg-black/70 backdrop-blur-sm text-white text-xs font-mono px-2.5 py-1 rounded-full pointer-events-none z-10">
@@ -133,7 +142,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               <>
                 <button
                   type="button"
-                  onClick={handlePrevious}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePrevious();
+                  }}
                   className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center min-w-[44px] min-h-[44px] rounded-full text-white transition-opacity duration-200 opacity-90 sm:opacity-0 sm:group-hover:opacity-100"
                   aria-label="Previous slide"
                 >
@@ -143,7 +155,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 </button>
                 <button
                   type="button"
-                  onClick={handleNext}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleNext();
+                  }}
                   className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center min-w-[44px] min-h-[44px] rounded-full text-white transition-opacity duration-200 opacity-90 sm:opacity-0 sm:group-hover:opacity-100"
                   aria-label="Next slide"
                 >
@@ -161,7 +176,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                   <button
                     key={idx}
                     type="button"
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.stopPropagation();
                       setDirection(idx > currentIndex ? 1 : -1);
                       setCurrentIndex(idx);
                     }}
@@ -189,13 +205,33 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
       {/* Project Info Section */}
       <div className="mb-4 flex items-start justify-between gap-4">
-        <div>
+        <div className="min-w-0 flex-1">
           <h3 className="heading-sm">{project.title}</h3>
-          {project.featured ? (
-            <span className="mt-2 inline-block rounded-none border border-accent bg-accent px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream">
-              Featured
-            </span>
-          ) : null}
+
+          <div className="mt-2.5 flex flex-wrap items-center gap-2">
+            {project.status === "in-progress" && (
+              <Badge
+                variant="accent"
+                className="inline-flex items-center gap-1.5 text-[11px] font-mono"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping motion-reduce:animate-none absolute inline-flex h-full w-full rounded-full bg-cream opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cream" />
+                </span>
+                In Progress
+              </Badge>
+            )}
+            {project.projectType && (
+              <Badge variant="outline" className="text-[11px]">
+                {project.projectType}
+              </Badge>
+            )}
+            {project.featured ? (
+              <span className="inline-block rounded-none border border-accent bg-accent px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream">
+                Featured
+              </span>
+            ) : null}
+          </div>
         </div>
         <span className="text-xs uppercase tracking-[0.2em] text-text-dim whitespace-nowrap">
           {project.tags.length} tech
@@ -243,6 +279,16 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </Link>
         ) : null}
       </div>
+
+      {images.length > 0 && !currentImageHasError && (
+        <ImageModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          images={images}
+          initialIndex={currentIndex}
+          projectTitle={project.title}
+        />
+      )}
     </Card>
   );
 }

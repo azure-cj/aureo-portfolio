@@ -1,7 +1,7 @@
 import type { HTMLAttributes, PropsWithChildren } from "react";
 import { cn } from "@/src/lib/utils";
 
-type BadgeVariant = "default" | "accent";
+type BadgeVariant = "default" | "accent" | "outline";
 
 interface BadgeProps extends PropsWithChildren<HTMLAttributes<HTMLSpanElement>> {
   variant?: BadgeVariant;
@@ -10,6 +10,7 @@ interface BadgeProps extends PropsWithChildren<HTMLAttributes<HTMLSpanElement>> 
 const variantStyles: Record<BadgeVariant, string> = {
   default: "border border-border bg-surface text-text-muted",
   accent: "rounded-none border border-accent bg-accent text-cream",
+  outline: "border border-border/80 bg-surface/60 text-text-muted",
 };
 
 export default function Badge({
