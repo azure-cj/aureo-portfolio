@@ -36,6 +36,8 @@ const projects: Project[] = [
     tags: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'Prisma ORM', 'PostgreSQL', 'Neon', 'JWT', 'bcryptjs', 'Nodemailer', 'Vercel Blob'],
     live: 'https://nufv-lostandfound.vercel.app/',
     featured: true,
+    icon: '/icons/nu-logo.png',
+    iconFit: 'contain',
     images: [
       "/projects/nufv-lost-found/preview.jpg",
       "/projects/nufv-lost-found/preview1.png",
@@ -51,6 +53,8 @@ const projects: Project[] = [
     live: 'https://gmc-web-nufv.vercel.app/',
     status: 'in-progress',
     featured: true,
+    icon: '/icons/nu-logo.png',
+    iconFit: 'contain',
     images: ['/projects/nufv-gmc-portal/websitepreview.jpg']
   },
   {

@@ -20,6 +20,7 @@ export type Project = {
   status?: "in-progress" | "completed"
   projectType?: string
   icon?: string
+  iconFit?: 'cover' | 'contain'
   github?: string
   live?: string
   download?: string

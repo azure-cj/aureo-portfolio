@@ -211,10 +211,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               <div className="relative h-8 w-8 md:h-10 md:w-10 shrink-0 overflow-hidden rounded-lg border border-border bg-surface">
                 <Image
                   src={project.icon}
-                  alt={`${project.title} app icon`}
+                  alt={project.iconFit === 'contain' ? 'NU logo' : `${project.title} app icon`}
                   width={40}
                   height={40}
-                  className="h-full w-full object-cover"
+                  className={`h-full w-full ${project.iconFit === 'contain' ? 'object-contain p-1' : 'object-cover'}`}
                 />
               </div>
               <h3 className="heading-sm min-w-0 break-words">{project.title}</h3>
